@@ -1,0 +1,1 @@
+draw_text(20, 30, "Total Enemies: " + string(instance_number(oEnemie)));
