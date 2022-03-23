@@ -12,7 +12,13 @@ var _currentPlanet = collision_circle(x, y, planetCollisionArea, oPlanet, 1, 1);
 var _horizontalDirection = rightKey - leftKey;
 var _verticalDirection = downKey - upKey;
 
-var _direction = new vector(_horizontalDirection * 10, 0);
+var _direction = new vector_zero();
+if(_horizontalDirection == 1){
+	_direction.set(grav.y, -grav.x);
+}
+if(_horizontalDirection == -1){
+	_direction.set(-grav.y, grav.x);
+}
 steering_forces.add(_direction);
 
 var _landed = place_meeting(x + velocity.x, y + velocity.y, _currentPlanet);

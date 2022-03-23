@@ -15,10 +15,11 @@
   "layers": [
     {"instances":[],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Player","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
-        {"properties":[],"isDnd":false,"objectId":{"name":"oShip","path":"objects/oShip/oShip.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":64.0,"y":96.0,"resourceVersion":"1.0","name":"inst_3A573787","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"oShip","path":"objects/oShip/oShip.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":480.0,"y":256.0,"resourceVersion":"1.0","name":"inst_3A573787","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Ships","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
-        {"properties":[],"isDnd":false,"objectId":{"name":"oPlanet","path":"objects/oPlanet/oPlanet.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":864.0,"y":352.0,"resourceVersion":"1.0","name":"inst_2E7356E4","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"oPlanet","path":"objects/oPlanet/oPlanet.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":2.40999913,"scaleY":2.40999913,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1504.0,"y":1824.0,"resourceVersion":"1.0","name":"inst_2E7356E4","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"oPlanet","path":"objects/oPlanet/oPlanet.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":2528.0,"y":-288.0,"resourceVersion":"1.0","name":"inst_7ED88F34","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Planet","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"oGameManager","path":"objects/oGameManager/oGameManager.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":-64.0,"y":0.0,"resourceVersion":"1.0","name":"inst_226EABEE","tags":[],"resourceType":"GMRInstance",},
@@ -38,6 +39,7 @@
     {"name":"inst_226EABEE","path":"rooms/rTesting/rTesting.yy",},
     {"name":"inst_21FA85A4","path":"rooms/rTesting/rTesting.yy",},
     {"name":"inst_2E7356E4","path":"rooms/rTesting/rTesting.yy",},
+    {"name":"inst_7ED88F34","path":"rooms/rTesting/rTesting.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

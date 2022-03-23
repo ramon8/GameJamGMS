@@ -74,7 +74,7 @@ function free(){
 
 function arrive(){
 	var _collisionFocusable = collision_circle(x, y, focusable_area, oCameraFocusable, 0, 1);
-	setCameraAspect(_collisionFocusable, 5, 0.05);
+	setCameraAspect(_collisionFocusable, 6, 0.05);
 	
 	if(!_collisionFocusable) state = free;
 	else{
