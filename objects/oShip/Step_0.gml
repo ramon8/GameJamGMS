@@ -7,3 +7,7 @@ isMoving = leftKey || upKey || rightKey || downKey;
 
 
 state();
+
+if(!place_meeting(x, y, oPlanet)){
+	grav_magnitude = 0;
+}

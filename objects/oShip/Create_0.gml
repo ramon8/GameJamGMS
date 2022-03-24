@@ -1,13 +1,21 @@
 
 position = new vector(x, y);
-velocity = new vector_random();
+velocity = new vector_zero();
 steering_forces = new vector_zero();
+grav = new vector_zero();
 
 focusable_area = 500;
 
-max_force = 0.25;
-max_speed = 10;
-max_speed_sprint = 20;
+max_force = 1;
+grav_magnitude = 0;
+
+ship_grav_force = 0.5;
+
+rotation_force = 2;
+
+max_speed_sprint = 30;
+max_speed_normal = 20;
+max_speed = max_speed_normal;
 
 collision_area = 10;
 
@@ -17,86 +25,62 @@ p = part_type_create();
 part_type_shape(p, pt_shape_pixel);
 part_type_size(p, 2, 5, 0, 1);
 
+
 function forces(){
-	// Forces
 	steering_forces.limit_magnitude(max_force);
 	velocity.add(steering_forces);
-	//velocity.add(_direction);
+	
+	
 	velocity.limit_magnitude(max_speed);
+	grav.limit_magnitude(grav_magnitude * ship_grav_force);
+	
 	position.add(velocity);
+	position.add(grav);
 
 	steering_forces.set(0, 0);
-	
 
-	// Positioning	
 	x = position.x;
 	y = position.y;
+	//image_angle = velocity.get_direction();
 	image_angle = direction;
 }
 
 function move(){
-	//Turbo
-	if(keyboard_check(vk_shift)) max_speed = max_speed_sprint;
-	else max_speed = lerp(max_speed, 5, 0.01);
 
-
-	// Movement
-	var _horizontalDirection = rightKey - leftKey;
-	var _verticalDirection = downKey - upKey;
-
-	var _direction = new vector(_horizontalDirection, _verticalDirection);
-	steering_forces.add(_direction);
+	var _slowForce = vector_copy(velocity.get_negated());
 	
-	direction = point_direction(0, 0, velocity.x, velocity.y);
+	if(downKey || !upKey) steering_forces.add(_slowForce);
+	
+	if(keyboard_check(vk_shift) && upKey) max_speed = lerp(max_speed, max_speed_sprint, 0.01);
+	else max_speed = lerp(max_speed, max_speed_normal, 0.01);
+
+	direction += (leftKey - rightKey) * rotation_force;
+	
+	if(upKey){
+		var _shipForce = vector_from_direction(direction, upKey);
+		steering_forces.add(_shipForce);
+	}
 }
+
 
 function free(){
-	setCameraAspect(oShip, 7, 0.1);
+	setCameraAspect(oShip, 15, 0.1);
 	move();
 
-
-	// Focusable
-	var _collisionFocusable = collision_circle(x, y, focusable_area, oCameraFocusable, 0, 1);
-
-	if(_collisionFocusable) state = arrive;
-	
-	/*
-		if(_collisionFocusable){
-			steering_forces.add(arrive_force(_collisionFocusable.x, _collisionFocusable.y, 200));
-			setCameraAspect(_collisionFocusable, 5, 0.05);
-		}else{
-			setCameraAspect(oShip, 7, 0.1);
-		}
-	*/
-	
-	forces();
-}
-
-function arrive(){
-	var _collisionFocusable = collision_circle(x, y, focusable_area, oCameraFocusable, 0, 1);
-	setCameraAspect(_collisionFocusable, 6, 0.05);
-	
-	if(!_collisionFocusable) state = free;
-	else{
-		var _x = _collisionFocusable.x;
-		var _y = _collisionFocusable.y;
-		var _landed = place_meeting(x + velocity.x, y + velocity.y, _collisionFocusable);
-		if(_landed)	{
-			velocity = new vector_zero();
-			if(keyboard_check_pressed(ord("E"))) state = landed;
-		}
-		else steering_forces.add(arrive_force(_x, _y, 200));
-		direction = lerp(direction, point_direction(_x, _y, x, y), 0.2);
+	var _landed = place_meeting(x + velocity.x, y + velocity.y, oCameraFocusable);
+	if(_landed)	{
+		velocity = new vector_zero();
+		state = landed;
 	}
-	
-	if(isMoving) move();
 	
 	forces();
 }
 
 function landed(){
-	if(!instance_exists(oAstronaut)) instance_create_layer(x, y, "Player", oAstronaut);
-	//else state = arrive;
+	if(keyboard_check_pressed(ord("E")) && !instance_exists(oAstronaut)) instance_create_layer(x, y, "Player", oAstronaut);
+	if(upKey){
+		state = free;
+	}
 }
 
 

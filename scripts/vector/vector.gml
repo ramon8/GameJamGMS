@@ -28,6 +28,12 @@ function vector(_x, _y) constructor {
 		y = -y;
 	}
 		
+	static get_negated = function() {
+		var _negated = new vector(x, y);
+		_negated.negate();
+		return _negated;
+	}
+		
 	static multiply = function(_scalar) {
 		gml_pragma("forceinline");
 		x *= _scalar;
@@ -102,5 +108,9 @@ function vector_copy(_vector) {
 
 function vector_subtract(_vector_a, _vector_b) {
 	return new vector((_vector_a.x - _vector_b.x), (_vector_a.y - _vector_b.y));
+}
+
+function vector_from_direction(_direction, _len = 1){
+	return new vector(lengthdir_x(_len, _direction), lengthdir_y(_len, _direction));
 }
 

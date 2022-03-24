@@ -22,21 +22,13 @@ if(_horizontalDirection == -1){
 steering_forces.add(_direction);
 
 var _landed = place_meeting(x + velocity.x, y + velocity.y, _currentPlanet);
+
 if(_landed)	{
 	velocity = new vector_zero();
-	if(upKey){
-		var _invertedGrav = new vector();
-		_invertedGrav.copy(grav);
-		_invertedGrav.negate();
-		steering_forces.add(_invertedGrav);
-	}
+	if(upKey) steering_forces.add(grav.get_negated());
 }else{
-	
 	// Gravity
-	var _x = lengthdir_x(200, direction);
-	var _y = lengthdir_y(200, direction);
-
-	grav.set(_x, _y);
+	grav.copy(vector_from_direction(direction));
 	steering_forces.add(grav);
 }
 
@@ -62,8 +54,6 @@ y = position.y;
 image_angle = direction;
 
 if(place_meeting(x, y, oShip) && keyboard_check_pressed(ord("Q"))){
-	with(oShip){
-		state = arrive;
-	}
+	with(oShip) state = free;
 	instance_destroy(self);
 }
